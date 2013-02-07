@@ -10,11 +10,12 @@ spl_autoload_register(function($class){
 });
 
 # Get Markdown class
-use \Michelf\Markdown;
+use \lib\Markdown;
 
 # Read file and pass content through the Markdown praser
+$m = new Markdown();
 $text = file_get_contents('Readme.md');
-$html = Markdown::defaultTransform($text);
+$html = $m->transform($text);
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ $html = Markdown::defaultTransform($text);
         <title>PHP Markdown Lib - Readme</title>
     </head>
     <body>
-		<?php
+<?php
 			# Put HTML content in the document
 			echo $html;
 		?>
